@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import HeadingDescription from "./HeadingDescription";
 import Lookup from "@/app/_data/Lookup";
 import { useSearchParams } from "next/navigation";
 
-function LogoTitle({ onHandleInputChange, formData }) {
+function LogoTitleContent({ onHandleInputChange, formData }) {
   const searchParam = useSearchParams();
   const [title, setTitle] = useState("");
 
@@ -35,6 +35,14 @@ function LogoTitle({ onHandleInputChange, formData }) {
         onChange={handleChange}
       />
     </div>
+  );
+}
+
+function LogoTitle({ onHandleInputChange, formData }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LogoTitleContent onHandleInputChange={onHandleInputChange} formData={formData} />
+    </Suspense>
   );
 }
 
