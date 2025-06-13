@@ -1,21 +1,20 @@
 "use client";
 
-import React, { useEffect } from 'react'
-import HeadingDescription from './HeadingDescription'
-import Lookup from '@/app/_data/Lookup'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { SignInButton, useUser } from '@clerk/nextjs'
-import Link from 'next/link'
+import React, { useEffect } from "react";
+import HeadingDescription from "./HeadingDescription";
+import Lookup from "@/app/_data/Lookup";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
+import Link from "next/link";
 
 function PricingModel({ onHandleInputChange, formData }) {
-
-    const { user } = useUser();
-    useEffect(() => {
-        if( formData?.title && typeof window !== 'undefined' ) {
-            localStorage.setItem('formData', JSON.stringify(formData));
-        }
-    },[formData])
+  const { user } = useUser();
+  useEffect(() => {
+    if (formData?.title && typeof window !== "undefined") {
+      localStorage.setItem("formData", JSON.stringify(formData));
+    }
+  }, [formData]);
 
   return (
     <div>
@@ -24,7 +23,7 @@ function PricingModel({ onHandleInputChange, formData }) {
         description={Lookup.LogoPricingModelDesc}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-5">
         {Lookup.pricingOption.map((pricing, index) => (
           <div
             key={index}
@@ -49,12 +48,20 @@ function PricingModel({ onHandleInputChange, formData }) {
                 <Button className="mt-5">{pricing.button}</Button>
               </Link>
             ) : (
-              <SignInButton
-                mode="modal"
-                forceRedirectUrl={"/generate-logo?type=" + pricing.title}
-              >
-                <Button className="mt-5">{pricing.button}</Button>
-              </SignInButton>
+              <div className="flex flex-row gap-7 mt-5">
+                <SignInButton
+                  mode="modal"
+                  forceRedirectUrl={`/generate-logo?type=${pricing.title}`}
+                >
+                  <Button variant="default">Sign In</Button>
+                </SignInButton>
+                <SignUpButton
+                  mode="modal"
+                  forceRedirectUrl={`/generate-logo?type=${pricing.title}`}
+                >
+                  <Button variant="secondary">Sign Up</Button>
+                </SignUpButton>
+              </div>
             )}
           </div>
         ))}
@@ -63,4 +70,4 @@ function PricingModel({ onHandleInputChange, formData }) {
   );
 }
 
-export default PricingModel
+export default PricingModel;
