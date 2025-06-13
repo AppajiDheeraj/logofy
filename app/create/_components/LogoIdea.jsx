@@ -31,7 +31,7 @@ function LogoIdea({ onHandleInputChange, formData }) {
     });
 
     console.log(result.data);
-    !ideas && setIdeas(result.data[0]?.ideas);
+    setIdeas(result.data?.ideas);
     setLoading(false);
   };
 
