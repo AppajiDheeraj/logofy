@@ -1,8 +1,13 @@
 # AI Logo Generator
 
 <p align="center">
-  <h1>Logofy.ai</h1>
-  <img src="public/logo.svg" alt="AI Logo Generator" width="200" />
+  <strong style="font-size: 2em;">Logofy.ai</strong>
+</p>
+
+<p align="center">
+  <img src="/logo.svg" alt="Logo" width="100" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="/favicon.ico" alt="Favicon" width="48" />
 </p>
 
 An AI-powered logo generator built with **Next.js**, **React**, and cutting-edge AI services. This application allows users to generate unique and visually appealing logos by entering simple prompts.
