@@ -1,8 +1,6 @@
 # AI Logo Generator
 
-<h1 align="center">
-  <strong>Logofy.ai</strong>
-</h1>
+<h1 align="center">Logofy.ai</h1>
 
 <p align="center">
   <img src="public/logo.svg" alt="Logo" width="100" />
